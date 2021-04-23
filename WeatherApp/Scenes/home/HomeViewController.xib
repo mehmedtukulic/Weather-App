@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham Rounded Book.otf">
+            <string>GothamRounded-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target">
+            <connections>
+                <outlet property="searchView" destination="OEF-Rk-Qm0" id="7i9-xc-70M"/>
+                <outlet property="settingsButton" destination="NaW-5U-FPW" id="tBA-Q9-XA0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="body_wind" translatesAutoresizingMaskIntoConstraints="NO" id="hru-Rc-455">
+                    <rect key="frame" x="0.0" y="349" width="414" height="547"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l1X-8f-6qT">
+                    <rect key="frame" x="36" y="796" width="342" height="46"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NaW-5U-FPW" userLabel="settings">
+                            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="5bj-xm-WgI"/>
+                                <constraint firstAttribute="width" constant="46" id="gy3-EU-8tT"/>
+                            </constraints>
+                            <state key="normal" image="settingsIcon"/>
+                            <connections>
+                                <action selector="settingsTapped:" destination="-1" eventType="touchUpInside" id="sTV-em-kf5"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEF-Rk-Qm0">
+                            <rect key="frame" x="56" y="3" width="286" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tys-qO-gZr">
+                                    <rect key="frame" x="16" y="11.5" width="45" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.79216760399999997" green="0.79213756319999995" blue="0.79215794799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8D-hm-3I9" userLabel="search button">
+                                    <rect key="frame" x="243" y="8" width="27" height="24"/>
+                                    <state key="normal" image="searchIcon"/>
+                                    <connections>
+                                        <action selector="searchTapped:" destination="-1" eventType="touchUpInside" id="FPQ-W9-51V"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="2lX-iw-mlh"/>
+                                <constraint firstItem="Tys-qO-gZr" firstAttribute="centerY" secondItem="OEF-Rk-Qm0" secondAttribute="centerY" id="UXC-yJ-bjR"/>
+                                <constraint firstItem="Tys-qO-gZr" firstAttribute="leading" secondItem="OEF-Rk-Qm0" secondAttribute="leading" constant="16" id="feb-rl-m8G"/>
+                                <constraint firstItem="d8D-hm-3I9" firstAttribute="centerY" secondItem="OEF-Rk-Qm0" secondAttribute="centerY" id="g68-cu-T2w"/>
+                                <constraint firstAttribute="trailing" secondItem="d8D-hm-3I9" secondAttribute="trailing" constant="16" id="kWN-HY-ENo"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="OEF-Rk-Qm0" secondAttribute="trailing" id="wuI-dD-bEu"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBN-q5-qEm">
+                    <rect key="frame" x="30" y="244" width="354" height="41.5"/>
+                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="41"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBlueColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l1X-8f-6qT" secondAttribute="trailing" constant="36" id="DtB-pr-IuJ"/>
+                <constraint firstItem="kBN-q5-qEm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="200" id="GGY-5L-tgi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="l1X-8f-6qT" secondAttribute="bottom" constant="20" id="GzW-fB-ZpB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hru-Rc-455" secondAttribute="trailing" id="J7J-al-rbF"/>
+                <constraint firstItem="kBN-q5-qEm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="gfd-Jo-VbX"/>
+                <constraint firstAttribute="bottom" secondItem="hru-Rc-455" secondAttribute="bottom" id="i6r-UU-o4B"/>
+                <constraint firstItem="hru-Rc-455" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qWp-Uh-ml4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kBN-q5-qEm" secondAttribute="trailing" constant="30" id="uvK-FL-uwZ"/>
+                <constraint firstItem="l1X-8f-6qT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="36" id="xAm-bX-iFg"/>
+            </constraints>
+            <point key="canvasLocation" x="113.04347826086958" y="89.732142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="body_wind" width="375" height="547"/>
+        <image name="searchIcon" width="27" height="24"/>
+        <image name="settingsIcon" width="24" height="24"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

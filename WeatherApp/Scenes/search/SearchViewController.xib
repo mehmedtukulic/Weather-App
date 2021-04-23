@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="WeatherApp" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iWe-KJ-TDM" id="Hzh-kN-lLe"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWe-KJ-TDM">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZh-Np-mnE">
+                            <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-vQ-RBS">
+                            <rect key="frame" x="332" y="52" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="closeTapped:" destination="-1" eventType="touchUpInside" id="HBX-W2-Ez0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <constraints>
+                        <constraint firstItem="UZh-Np-mnE" firstAttribute="centerX" secondItem="iWe-KJ-TDM" secondAttribute="centerX" id="5DS-yi-qCT"/>
+                        <constraint firstAttribute="trailing" secondItem="aNv-vQ-RBS" secondAttribute="trailing" constant="36" id="5Wa-CS-w6d"/>
+                        <constraint firstItem="UZh-Np-mnE" firstAttribute="centerY" secondItem="iWe-KJ-TDM" secondAttribute="centerY" id="9Wm-w5-2wl"/>
+                        <constraint firstItem="aNv-vQ-RBS" firstAttribute="top" secondItem="iWe-KJ-TDM" secondAttribute="top" constant="52" id="Hyd-0X-x3o"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="iWe-KJ-TDM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Bdz-IW-2US"/>
+                <constraint firstItem="iWe-KJ-TDM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Oqs-CX-AFe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iWe-KJ-TDM" secondAttribute="trailing" id="aDP-nC-4Un"/>
+                <constraint firstAttribute="bottom" secondItem="iWe-KJ-TDM" secondAttribute="bottom" id="reP-j2-aba"/>
+            </constraints>
+            <point key="canvasLocation" x="22" y="104"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
