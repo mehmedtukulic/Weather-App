@@ -13,7 +13,7 @@ class WeatherWorker{
     func getWeather(cityName: String? = nil,
                     lat: Double? = nil,
                     lon: Double? = nil,
-                    success: @escaping (String) -> Void,
+                    success: @escaping (WeatherModel) -> Void,
                     failure: @escaping (String)  -> Void) {
         
         let apiKey = "1efe7ac6961a33484d1fb6bc1059e652"
@@ -28,6 +28,8 @@ class WeatherWorker{
         if let lattitude = lat, let longitude = lon {
             path = path + "lat=\(lattitude)" + "&lon=\(longitude)"
         }
+        
+        path.append("&units=metric")
         
         path.append("&appid=\(apiKey)")
 
@@ -50,7 +52,7 @@ class WeatherWorker{
                     do {
                         // parse result
                        let decoder = JSONDecoder()
-                       let object = try decoder.decode(String.self, from: data)
+                       let object = try decoder.decode(WeatherModel.self, from: data)
                        success(object)
 
                     } catch (let error){
