@@ -15,6 +15,9 @@
 		84A2274E262B833100CED8B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A2274C262B833100CED8B7 /* LaunchScreen.storyboard */; };
 		84BDC34C26337A9900CA5C1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC34A26337A9900CA5C1A /* SearchViewController.swift */; };
 		84BDC34D26337A9900CA5C1A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BDC34B26337A9900CA5C1A /* SearchViewController.xib */; };
+		84BDC3512634D65E00CA5C1A /* WeatherLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC3502634D65E00CA5C1A /* WeatherLocationManager.swift */; };
+		84BDC3542634D7AF00CA5C1A /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC3532634D7AF00CA5C1A /* DefaultsManager.swift */; };
+		84BDC3582634E64D00CA5C1A /* WeatherWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC3572634E64D00CA5C1A /* WeatherWorker.swift */; };
 		84D7AC46262E5DA00019368A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7AC44262E5DA00019368A /* HomeViewController.swift */; };
 		84D7AC47262E5DA00019368A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7AC45262E5DA00019368A /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -30,6 +33,9 @@
 		84A2274F262B833100CED8B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BDC34A26337A9900CA5C1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		84BDC34B26337A9900CA5C1A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		84BDC3502634D65E00CA5C1A /* WeatherLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationManager.swift; sourceTree = "<group>"; };
+		84BDC3532634D7AF00CA5C1A /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		84BDC3572634E64D00CA5C1A /* WeatherWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWorker.swift; sourceTree = "<group>"; };
 		84D7AC44262E5DA00019368A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84D7AC45262E5DA00019368A /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		84D7AC4E262E60EE0019368A /* Gotham Rounded Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded Light.otf"; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 			children = (
 				84D7AC4C262E60BA0019368A /* Extensions & Utilities */,
 				84A2275C262B83B300CED8B7 /* Supporting files */,
+				84BDC34F2634D62C00CA5C1A /* Managers */,
+				84BDC3562634E60800CA5C1A /* Workers */,
 				84A2275D262B83BD00CED8B7 /* Scenes */,
 				84A22741262B832E00CED8B7 /* AppDelegate.swift */,
 				84A2274A262B833100CED8B7 /* Assets.xcassets */,
@@ -124,6 +132,23 @@
 				84A22745262B832E00CED8B7 /* ViewController.swift */,
 			);
 			path = Initial;
+			sourceTree = "<group>";
+		};
+		84BDC34F2634D62C00CA5C1A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84BDC3502634D65E00CA5C1A /* WeatherLocationManager.swift */,
+				84BDC3532634D7AF00CA5C1A /* DefaultsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		84BDC3562634E60800CA5C1A /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				84BDC3572634E64D00CA5C1A /* WeatherWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		84D7AC3D262E5B6C0019368A /* home */ = {
@@ -179,6 +204,7 @@
 				84A2273A262B832E00CED8B7 /* Sources */,
 				84A2273B262B832E00CED8B7 /* Frameworks */,
 				84A2273C262B832E00CED8B7 /* Resources */,
+				D07D0BFAE35DB1195DF6F3C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,6 +285,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D07D0BFAE35DB1195DF6F3C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,6 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A22746262B832E00CED8B7 /* ViewController.swift in Sources */,
+				84BDC3542634D7AF00CA5C1A /* DefaultsManager.swift in Sources */,
+				84BDC3582634E64D00CA5C1A /* WeatherWorker.swift in Sources */,
+				84BDC3512634D65E00CA5C1A /* WeatherLocationManager.swift in Sources */,
 				84A22742262B832E00CED8B7 /* AppDelegate.swift in Sources */,
 				84BDC34C26337A9900CA5C1A /* SearchViewController.swift in Sources */,
 				84D7AC46262E5DA00019368A /* HomeViewController.swift in Sources */,

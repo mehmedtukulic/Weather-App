@@ -48,5 +48,9 @@
 		<string>Gotham Rounded Light.otf</string>
 		<string>Gotham Rounded Book.otf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To determine your current location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To determine your current location</string>
 </dict>
 </plist>
