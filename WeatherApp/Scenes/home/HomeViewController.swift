@@ -10,12 +10,16 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var headerView: UIImageView!
+    @IBOutlet weak var bodyView: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var searchView: UIView!
     private var visualEffectView: UIVisualEffectView!
- 
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
     private var locationManager: WeatherLocationManager?
     private var defaultsManager = DefaultsManager()
+    private var conditionsManager = WeatherConditionsManager()
     
     private var viewModel = HomeViewModel()
     
@@ -37,8 +41,10 @@ class HomeViewController: UIViewController {
     private func setupBindings(){
         viewModel.modelChanged = { [weak self] in
             guard let self = self else {return}
-            
-            print(self.viewModel.weatherModel.name)
+            let model = self.viewModel.weatherModel
+            let weatherImages = self.conditionsManager.getWeatherImages(weather: (model?.weather[0])!)
+            self.headerView.image = weatherImages.header
+            self.bodyView.image = weatherImages.body
         }
     }
     
@@ -62,6 +68,10 @@ class HomeViewController: UIViewController {
         searchView.isUserInteractionEnabled = true
         searchView.addGestureRecognizer(tap)
         searchView.layer.cornerRadius = 20
+        
+        if DeviceManager.isSmallScreen() {
+            topConstraint.constant = 100
+        }
         
     }
     
