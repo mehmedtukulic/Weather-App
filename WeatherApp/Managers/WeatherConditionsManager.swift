@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import UIGradient
 
 class WeatherConditionsManager{
     
@@ -90,21 +91,69 @@ class WeatherConditionsManager{
     func getCloudyImages(id: Int, icon: String) -> (header: UIImage, body: UIImage) {
         
         switch id {
+        //partly cloudy
         case 801:
-            if icon == "02d"{
-                let bodyImage = UIImage(named: "body_partly_cloudy_day") ?? UIImage()
+            if icon.contains("d"){
+                //partly cloudy and cloudy have the same body
+                let bodyImage = UIImage(named: "body_cloudy_day") ?? UIImage()
                 let headerImage = UIImage(named: "header_partly_cloudy_day") ?? UIImage()
                 return (headerImage,bodyImage)
             }
-            
-            let bodyImage = UIImage(named: "body_partly_cloudy_night") ?? UIImage()
+
+            let bodyImage = UIImage(named: "body_cloudy_night") ?? UIImage()
             let headerImage = UIImage(named: "header_partly_cloudy_night") ?? UIImage()
             return (headerImage,bodyImage)
-            
         default:
-            let bodyImage = UIImage(named: "body_cloudy") ?? UIImage()
+            //cloudy
             let headerImage = UIImage(named: "header_cloudy") ?? UIImage()
+            
+            //if its cloudy, take partly cloudy body based on day/night
+            if icon.contains("d"){
+                let bodyImage = UIImage(named: "body_cloudy_day") ?? UIImage()
+                return (headerImage,bodyImage)
+            }
+            
+            //cloudy and partly cloudy have
+            let bodyImage = UIImage(named: "body_cloudy_night") ?? UIImage()
             return (headerImage,bodyImage)
         }
+    }
+    
+    
+    func getWeatherGradient(weather: WeatherModel.Weather) -> GradientLayer{
+        //Rain, snow and fog have its custom colors
+        //Other weathers colors depends on day/night
+        
+        switch weather.id {
+        //rain
+        case 300...321:
+            return GradientLayer(direction: .topToBottom, colors: [.rainTop,.rainBottom])
+        //rain
+        case 500...531:
+            return GradientLayer(direction: .topToBottom, colors: [.rainTop,.rainBottom])
+        //snow
+        case 600...622:
+            return GradientLayer(direction: .topToBottom, colors: [.snowTop,.snowBottom])
+        //fog
+        case 741:
+            return GradientLayer(direction: .topToBottom, colors: [.fogTop,.fogBottom])
+        //others
+        default:
+            //night
+            if weather.icon.contains("n") {
+                return GradientLayer(direction: .topToBottom, colors: [.nightTop,.nightBottom])
+            } else {
+                //day
+                return GradientLayer(direction: .topToBottom, colors: [.dayTop,.dayBottom])
+            }
+        }
+        
+    }
+}
+
+extension WeatherConditionsManager {
+    func temperatureInFahrenheit(temperature: Double) -> Double {
+          let fahrenheitTemperature = temperature * 9 / 5 + 32
+          return fahrenheitTemperature.rounded(toPlaces: 1)
     }
 }

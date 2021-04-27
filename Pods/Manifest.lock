@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.4.1)
+  - UIGradient (1.3.2)
 
 DEPENDENCIES:
   - Alamofire
+  - UIGradient
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - UIGradient
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  UIGradient: 2364e9ebac232686db220713b4d42a68222fffb2
 
-PODFILE CHECKSUM: 0095b8ac3160bc79c9cdda77624eea08d67f7599
+PODFILE CHECKSUM: 3aff77c0c6aff4b261f62052a3c6d43e8d5a0dad
 
 COCOAPODS: 1.10.1

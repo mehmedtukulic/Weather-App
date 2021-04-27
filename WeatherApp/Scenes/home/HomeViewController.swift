@@ -7,15 +7,31 @@
 
 import UIKit
 import CoreLocation
+import UIGradient
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIImageView!
+    @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var bodyView: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherInfoLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var searchView: UIView!
-    private var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var lowTempLabel: UILabel!
+    @IBOutlet weak var highTempLabel: UILabel!
+    @IBOutlet weak var humidityStack: UIStackView!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var windStack: UIStackView!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var pressureStack: UIStackView!
+    @IBOutlet weak var pressureLabel: UILabel!
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nameTopConstraint: NSLayoutConstraint!
+    
+    private var visualEffectView: UIVisualEffectView!
     
     private var locationManager: WeatherLocationManager?
     private var defaultsManager = DefaultsManager()
@@ -42,9 +58,32 @@ class HomeViewController: UIViewController {
         viewModel.modelChanged = { [weak self] in
             guard let self = self else {return}
             let model = self.viewModel.weatherModel
+            
+            let gradient = self.conditionsManager.getWeatherGradient(weather: (model?.weather[0])!)
+            self.gradientView.addGradient(gradient)
+            
             let weatherImages = self.conditionsManager.getWeatherImages(weather: (model?.weather[0])!)
             self.headerView.image = weatherImages.header
             self.bodyView.image = weatherImages.body
+            
+            let name = model?.name ?? ""
+            let temp = Int(model?.mainInfo.temp ?? 0.0)
+            let description = model?.weather[0].main ?? ""
+            let minTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMin ?? 0.0)
+            let maxTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMax ?? 0.0)
+            let humidity = model?.mainInfo.humidity ?? 0.0
+            let pressure = Int(model?.mainInfo.pressure ?? 0.0)
+            let wind = model?.wind.speed.rounded(toPlaces: 1) ?? 0.0
+            
+            self.weatherInfoLabel.text = description
+            self.cityLabel.text = name
+            self.temperatureLabel.text = ("\(temp)°")
+            self.lowTempLabel.text = ("\(minTemp) °F")
+            self.highTempLabel.text = ("\(maxTemp) °F")
+            self.humidityLabel.text = ("\(humidity)%")
+            self.pressureLabel.text = ("\(pressure) hpa")
+            self.windLabel.text = ("\(wind) mph")
+        
         }
     }
     
@@ -71,6 +110,7 @@ class HomeViewController: UIViewController {
         
         if DeviceManager.isSmallScreen() {
             topConstraint.constant = 100
+            nameTopConstraint.constant = 60
         }
         
     }
@@ -87,6 +127,10 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 1) {
             self.visualEffectView.alpha = 0
         }
+    }
+    
+    private func addGradient(){
+        gradientView.addGradientWithDirection(.bottomLeftToTopRight, colors: [.black,.blue])
     }
     
 }

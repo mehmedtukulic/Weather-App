@@ -18,6 +18,8 @@
 		84A7AE3526359DA000CCAE53 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7AE3426359DA000CCAE53 /* WeatherModel.swift */; };
 		84A7AE3C2635AC6D00CCAE53 /* WeatherConditionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7AE3B2635AC6D00CCAE53 /* WeatherConditionsManager.swift */; };
 		84A7AE402636534A00CCAE53 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7AE3F2636534A00CCAE53 /* DeviceManager.swift */; };
+		84A7AE462637613200CCAE53 /* Double+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7AE452637613200CCAE53 /* Double+Extra.swift */; };
+		84A7AE512637762100CCAE53 /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7AE502637762100CCAE53 /* UIColor+Extra.swift */; };
 		84BDC34C26337A9900CA5C1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC34A26337A9900CA5C1A /* SearchViewController.swift */; };
 		84BDC34D26337A9900CA5C1A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BDC34B26337A9900CA5C1A /* SearchViewController.xib */; };
 		84BDC3512634D65E00CA5C1A /* WeatherLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDC3502634D65E00CA5C1A /* WeatherLocationManager.swift */; };
@@ -41,6 +43,8 @@
 		84A7AE3426359DA000CCAE53 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		84A7AE3B2635AC6D00CCAE53 /* WeatherConditionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditionsManager.swift; sourceTree = "<group>"; };
 		84A7AE3F2636534A00CCAE53 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		84A7AE452637613200CCAE53 /* Double+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extra.swift"; sourceTree = "<group>"; };
+		84A7AE502637762100CCAE53 /* UIColor+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extra.swift"; sourceTree = "<group>"; };
 		84BDC34A26337A9900CA5C1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		84BDC34B26337A9900CA5C1A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		84BDC3502634D65E00CA5C1A /* WeatherLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationManager.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				84D7AC4D262E60CA0019368A /* custom fonts */,
+				84A7AE452637613200CCAE53 /* Double+Extra.swift */,
+				84A7AE502637762100CCAE53 /* UIColor+Extra.swift */,
 			);
 			path = "Extensions & Utilities";
 			sourceTree = "<group>";
@@ -338,9 +344,11 @@
 				84BDC3542634D7AF00CA5C1A /* DefaultsManager.swift in Sources */,
 				84BDC3582634E64D00CA5C1A /* WeatherWorker.swift in Sources */,
 				84A7AE3526359DA000CCAE53 /* WeatherModel.swift in Sources */,
+				84A7AE512637762100CCAE53 /* UIColor+Extra.swift in Sources */,
 				84BDC3512634D65E00CA5C1A /* WeatherLocationManager.swift in Sources */,
 				84A22742262B832E00CED8B7 /* AppDelegate.swift in Sources */,
 				84A7AE2E2635978A00CCAE53 /* Box.swift in Sources */,
+				84A7AE462637613200CCAE53 /* Double+Extra.swift in Sources */,
 				84BDC34C26337A9900CA5C1A /* SearchViewController.swift in Sources */,
 				84D7AC46262E5DA00019368A /* HomeViewController.swift in Sources */,
 				84A7AE3C2635AC6D00CCAE53 /* WeatherConditionsManager.swift in Sources */,
