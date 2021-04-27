@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="LocationViewCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="281" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="281" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-MP-c3M">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-XS-xz5">
+                                <rect key="frame" x="15" y="9.5" width="10" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.55294117647058827" green="0.67450980392156867" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bfR-XS-xz5" firstAttribute="centerY" secondItem="sDG-MP-c3M" secondAttribute="centerY" id="D84-Xo-MTQ"/>
+                            <constraint firstItem="bfR-XS-xz5" firstAttribute="centerX" secondItem="sDG-MP-c3M" secondAttribute="centerX" id="G9p-JJ-0gj"/>
+                            <constraint firstAttribute="width" constant="40" id="cJh-dD-7VP"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London, GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkL-Qz-8IY">
+                        <rect key="frame" x="50" y="12" width="85" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sDG-MP-c3M" secondAttribute="bottom" id="Fjq-ar-TTg"/>
+                <constraint firstItem="PkL-Qz-8IY" firstAttribute="centerY" secondItem="sDG-MP-c3M" secondAttribute="centerY" constant="2" id="WKl-X4-eRD"/>
+                <constraint firstItem="sDG-MP-c3M" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="ZkB-qk-cTS"/>
+                <constraint firstItem="PkL-Qz-8IY" firstAttribute="leading" secondItem="sDG-MP-c3M" secondAttribute="trailing" constant="10" id="dnX-d6-BOA"/>
+                <constraint firstItem="sDG-MP-c3M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g35-JQ-Fsd"/>
+                <constraint firstItem="sDG-MP-c3M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vW9-H8-gzW"/>
+            </constraints>
+            <size key="customSize" width="281" height="53"/>
+            <connections>
+                <outlet property="firstLetterLabel" destination="bfR-XS-xz5" id="lgQ-e0-MrD"/>
+                <outlet property="nameLabel" destination="PkL-Qz-8IY" id="c7f-H2-UEg"/>
+            </connections>
+            <point key="canvasLocation" x="302.17391304347831" y="85.379464285714278"/>
+        </collectionViewCell>
+    </objects>
+</document>

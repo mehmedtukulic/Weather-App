@@ -10,7 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="aNv-vQ-RBS" id="gAJ-Hr-Xbi"/>
+                <outlet property="collectionView" destination="3HH-Wu-IbF" id="tzQ-Li-QQR"/>
                 <outlet property="containerView" destination="iWe-KJ-TDM" id="Hzh-kN-lLe"/>
+                <outlet property="searchBottomConstraint" destination="Oul-XD-iS6" id="nku-b7-zgq"/>
+                <outlet property="searchButton" destination="KNo-rx-Y0e" id="x1C-Fa-yRJ"/>
+                <outlet property="searchTextField" destination="y3b-W2-yMu" id="f4k-Eo-gVB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,26 +27,56 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWe-KJ-TDM">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZh-Np-mnE">
-                            <rect key="frame" x="186" y="437.5" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-vQ-RBS">
-                            <rect key="frame" x="332" y="52" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-vQ-RBS">
+                            <rect key="frame" x="358" y="40" width="32" height="32"/>
+                            <color key="backgroundColor" red="0.55294117647058827" green="0.67450980392156867" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="8u4-qe-sDX"/>
+                                <constraint firstAttribute="height" constant="32" id="upZ-AV-0Au"/>
+                            </constraints>
+                            <state key="normal" image="xIcon"/>
                             <connections>
                                 <action selector="closeTapped:" destination="-1" eventType="touchUpInside" id="HBX-W2-Ez0"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y3b-W2-yMu">
+                            <rect key="frame" x="24" y="816" width="366" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Lxo-u3-eiS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="continue"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNo-rx-Y0e" userLabel="search button">
+                            <rect key="frame" x="347" y="824" width="27" height="24"/>
+                            <state key="normal" image="searchIcon"/>
+                        </button>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3HH-Wu-IbF">
+                            <rect key="frame" x="0.0" y="80" width="414" height="300"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="300" id="QcK-YY-qyo"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CmH-H4-R63">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="UZh-Np-mnE" firstAttribute="centerX" secondItem="iWe-KJ-TDM" secondAttribute="centerX" id="5DS-yi-qCT"/>
-                        <constraint firstAttribute="trailing" secondItem="aNv-vQ-RBS" secondAttribute="trailing" constant="36" id="5Wa-CS-w6d"/>
-                        <constraint firstItem="UZh-Np-mnE" firstAttribute="centerY" secondItem="iWe-KJ-TDM" secondAttribute="centerY" id="9Wm-w5-2wl"/>
-                        <constraint firstItem="aNv-vQ-RBS" firstAttribute="top" secondItem="iWe-KJ-TDM" secondAttribute="top" constant="52" id="Hyd-0X-x3o"/>
+                        <constraint firstAttribute="trailing" secondItem="3HH-Wu-IbF" secondAttribute="trailing" id="2s2-go-HQR"/>
+                        <constraint firstAttribute="trailing" secondItem="aNv-vQ-RBS" secondAttribute="trailing" constant="24" id="5Wa-CS-w6d"/>
+                        <constraint firstItem="y3b-W2-yMu" firstAttribute="leading" secondItem="iWe-KJ-TDM" secondAttribute="leading" constant="24" id="6gS-L6-csQ"/>
+                        <constraint firstItem="aNv-vQ-RBS" firstAttribute="top" secondItem="iWe-KJ-TDM" secondAttribute="top" constant="40" id="Hyd-0X-x3o"/>
+                        <constraint firstItem="3HH-Wu-IbF" firstAttribute="top" secondItem="aNv-vQ-RBS" secondAttribute="bottom" constant="8" symbolic="YES" id="IyD-f9-XGd"/>
+                        <constraint firstAttribute="bottom" secondItem="y3b-W2-yMu" secondAttribute="bottom" constant="40" id="Oul-XD-iS6"/>
+                        <constraint firstItem="KNo-rx-Y0e" firstAttribute="trailing" secondItem="y3b-W2-yMu" secondAttribute="trailing" constant="-16" id="aHe-PM-UfE"/>
+                        <constraint firstItem="KNo-rx-Y0e" firstAttribute="centerY" secondItem="y3b-W2-yMu" secondAttribute="centerY" id="hoT-hV-6z1"/>
+                        <constraint firstItem="3HH-Wu-IbF" firstAttribute="leading" secondItem="iWe-KJ-TDM" secondAttribute="leading" id="j1u-AS-Gtg"/>
+                        <constraint firstAttribute="trailing" secondItem="y3b-W2-yMu" secondAttribute="trailing" constant="24" id="wV3-rI-rrR"/>
                     </constraints>
                 </view>
             </subviews>
@@ -57,8 +92,10 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="searchIcon" width="27" height="24"/>
+        <image name="xIcon" width="14" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
