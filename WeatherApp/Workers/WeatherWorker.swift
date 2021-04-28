@@ -11,6 +11,7 @@ import Alamofire
 class WeatherWorker{
     
     func getWeather(cityName: String? = nil,
+                    countryCode: String? = nil,
                     lat: Double? = nil,
                     lon: Double? = nil,
                     success: @escaping (WeatherModel) -> Void,
@@ -21,8 +22,8 @@ class WeatherWorker{
         // create url
         var path = "https://api.openweathermap.org/data/2.5/weather?"
         
-        if let city = cityName {
-            path = path + "q=\(city)"
+        if let city = cityName, let country = countryCode {
+            path = path + "q=\(city)" + ",\(country)"
         }
         
         if let lattitude = lat, let longitude = lon {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol SearchDelegate: class{
     func didClose()
-    func didChooseLocation()
+    func didChooseLocation(model: WeatherModel)
 }
 
 class SearchViewController: UIViewController {
@@ -20,6 +20,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchBottomConstraint: NSLayoutConstraint!
+    
+    private var spinner: UIActivityIndicatorView!
+    private var isSpinning: Bool = false
     
     weak var delegate: SearchDelegate?
     private var viewModel = SearchViewModel()
@@ -67,6 +70,25 @@ class SearchViewController: UIViewController {
         collectionView.backgroundColor = .clear
     }
     
+    private func startSpinner(){
+        spinner = UIActivityIndicatorView(style: .large)
+        
+        let spinnerView = UIView()
+        spinnerView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        isSpinning = true
+    }
+    
+    private func stopSpinner(){
+        spinner.stopAnimating()
+        isSpinning = false
+    }
+    
     @IBAction func closeTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         delegate?.didClose()
@@ -108,7 +130,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if viewModel.locations.value.count == 0 && searchTextField.text!.count >= 3{
             return 1
         }
-
+        
         return viewModel.locations.value.count
     }
     
@@ -134,7 +156,49 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selecto")
+        //User selected location, waiting for backend
+        if isSpinning{
+            return
+        }
+        
+        startSpinner()
+        
+        let selectedLocation = viewModel.locations.value[indexPath.row]
+        
+        //Get previously choosen locations
+        if var savedLocations = DefaultsManager().choosenLocations {
+            
+            //If this location was alredy choosen, remove it
+            if savedLocations.contains(where: {$0.id == selectedLocation.id}){
+                savedLocations = savedLocations.filter{$0.id != selectedLocation.id}
+            }
+            
+            let city = selectedLocation.name
+            let country = selectedLocation.countryCode.lowercased()
+            
+            WeatherWorker().getWeather(cityName: city, countryCode: country) { [weak self] (model) in
+                guard let self = self else {return}
+                
+                //If there is no result, just dismiss the vc
+                if !model.weather.isEmpty {
+                    self.delegate?.didChooseLocation(model: model)
+                    
+                    //Insert new location on the first place
+                    savedLocations.insert(selectedLocation, at: 0)
+                    //Replace old locations with new array
+                    DefaultsManager().choosenLocations = savedLocations
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+                self.delegate?.didClose()
+                
+            } failure: { [weak self] (error) in
+                self?.stopSpinner()
+                self?.dismiss(animated: true, completion: nil)
+                self?.delegate?.didClose()
+            }
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

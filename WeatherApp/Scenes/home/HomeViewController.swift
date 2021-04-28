@@ -43,7 +43,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        if let _ = defaultsManager.lastLocationChoosen{
+        //If user alredy searched for some locations
+        if let _ = defaultsManager.choosenLocations?.first{
             viewModel.getWeatherForLastLocation()
         } else {
             getCurrentLocation()
@@ -138,12 +139,13 @@ class HomeViewController: UIViewController {
 // MARK: - Search Delegate
 
 extension HomeViewController: SearchDelegate {
+    
     func didClose() {
         hideBlurWithAnimation()
     }
     
-    func didChooseLocation() {
-        
+    func didChooseLocation(model: WeatherModel) {
+        viewModel.weatherModel = model
     }
 }
 

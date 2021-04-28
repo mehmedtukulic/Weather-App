@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51D108DA8F138E3BFE3C5080 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37ED3882198A4A4523612865 /* Pods_WeatherApp.framework */; };
+		847B1DFC2638DF1200F69855 /* UserDefaults+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B1DFB2638DF1200F69855 /* UserDefaults+Extra.swift */; };
 		849E73662638C16D000C2C17 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E73652638C16D000C2C17 /* SearchViewModel.swift */; };
 		849E73692638C572000C2C17 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E73682638C572000C2C17 /* LocationWorker.swift */; };
 		849E736C2638C5CB000C2C17 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E736B2638C5CB000C2C17 /* LocationModel.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		37ED3882198A4A4523612865 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		847B1DFB2638DF1200F69855 /* UserDefaults+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extra.swift"; sourceTree = "<group>"; };
 		849E73652638C16D000C2C17 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		849E73682638C572000C2C17 /* LocationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWorker.swift; sourceTree = "<group>"; };
 		849E736B2638C5CB000C2C17 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				84A7AE452637613200CCAE53 /* Double+Extra.swift */,
 				84A7AE502637762100CCAE53 /* UIColor+Extra.swift */,
 				849E73772638D24F000C2C17 /* UICell+Extra.swift */,
+				847B1DFB2638DF1200F69855 /* UserDefaults+Extra.swift */,
 			);
 			path = "Extensions & Utilities";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				84BDC3512634D65E00CA5C1A /* WeatherLocationManager.swift in Sources */,
 				84A22742262B832E00CED8B7 /* AppDelegate.swift in Sources */,
 				84A7AE2E2635978A00CCAE53 /* Box.swift in Sources */,
+				847B1DFC2638DF1200F69855 /* UserDefaults+Extra.swift in Sources */,
 				84A7AE462637613200CCAE53 /* Double+Extra.swift in Sources */,
 				849E73732638D02A000C2C17 /* LocationViewCell.swift in Sources */,
 				84BDC34C26337A9900CA5C1A /* SearchViewController.swift in Sources */,

@@ -17,12 +17,23 @@ class DefaultsManager{
         }
     }
     
-    var lastLocationChoosen: String? {
+    var choosenLocations: [Location]? {
         set(value) {
-            UserDefaults.standard.set(value, forKey: "lastLocation")
+            do {
+                try UserDefaults.standard.setObject(value, forKey: "choosenLocations")
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         get {
-            return UserDefaults.standard.string(forKey: "lastLocation")
+            do {
+                let locations = try UserDefaults.standard.getObject(forKey: "choosenLocations", castTo: [Location].self)
+                return locations
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            return []
         }
     }
 }
