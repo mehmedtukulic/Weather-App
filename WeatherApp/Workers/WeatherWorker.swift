@@ -30,7 +30,7 @@ class WeatherWorker{
             path = path + "lat=\(lattitude)" + "&lon=\(longitude)"
         }
         
-        path.append("&units=metric")
+        path.append("&units=\(getUnits())")
         
         path.append("&appid=\(apiKey)")
 
@@ -60,7 +60,7 @@ class WeatherWorker{
                         failure(error.localizedDescription)
                     }
                 } else {
-                    failure("Something went wrong")
+                    failure("Weather for selected city not found!")
                 }
 
             } else {
@@ -73,7 +73,7 @@ class WeatherWorker{
 
 
 extension WeatherWorker {
-    func getMetrics(){
-        
+    func getUnits() -> String{
+        return DefaultsManager().units ?? "metric"
     }
 }

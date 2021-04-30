@@ -156,4 +156,9 @@ extension WeatherConditionsManager {
           let fahrenheitTemperature = temperature * 9 / 5 + 32
           return fahrenheitTemperature.rounded(toPlaces: 1)
     }
+    
+    func temperatureInCelsius(temperature: Double) -> Double {
+          let celsiusTemperature = (temperature - 32) * 5 / 9
+          return celsiusTemperature.rounded(toPlaces: 1)
+    }
 }

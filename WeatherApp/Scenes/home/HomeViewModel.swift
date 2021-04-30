@@ -30,8 +30,8 @@ class HomeViewModel {
 extension HomeViewModel {
    
     func getWeatherForLastLocation(){
-        let city = defaultsManager.choosenLocations?.first?.name ?? "London"
-        let country = defaultsManager.choosenLocations?.first?.countryCode.lowercased() ?? "uk"
+        let city = defaultsManager.choosenLocations?.first?.name ?? "Sarajevo"
+        let country = defaultsManager.choosenLocations?.first?.countryCode.lowercased() ?? "ba"
         
         weatherWorker.getWeather(cityName: city, countryCode: country) { [weak self] (model) in
             self?.weatherModel = model

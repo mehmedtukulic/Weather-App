@@ -12,9 +12,6 @@ class LocationViewCell: UICollectionViewCell {
     @IBOutlet weak var firstLetterLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     func setup(location: Location){
         firstLetterLabel.text = String(location.name.prefix(1))

@@ -8,10 +8,20 @@
 import UIKit
 
 class SettingsLocationViewCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    private var locationId: Int!
+    var deleteSelected: ((Int) -> Void)?
+    
+    
+    func setup(location: Location){
+        titleLabel.text = location.name + "," + " \(location.countryCode)"
+        locationId = location.id
     }
-
+    
+    @IBAction func deleteTapped(_ sender: Any) {
+        deleteSelected?(locationId)
+    }
+    
 }

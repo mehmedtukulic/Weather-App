@@ -60,37 +60,67 @@ class HomeViewController: UIViewController {
             guard let self = self else {return}
             let model = self.viewModel.weatherModel
             
+            //Gradient
             let gradient = self.conditionsManager.getWeatherGradient(weather: (model?.weather[0])!)
             self.gradientView.addGradient(gradient)
             
+            //Header and body
             let weatherImages = self.conditionsManager.getWeatherImages(weather: (model?.weather[0])!)
             self.headerView.image = weatherImages.header
             self.bodyView.image = weatherImages.body
             
+            //Parameters
             let name = model?.name ?? ""
-            let temp = Int(model?.mainInfo.temp ?? 0.0)
             let description = model?.weather[0].main ?? ""
-            let minTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMin ?? 0.0)
-            let maxTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMax ?? 0.0)
             let humidity = model?.mainInfo.humidity ?? 0.0
             let pressure = Int(model?.mainInfo.pressure ?? 0.0)
             let wind = model?.wind.speed.rounded(toPlaces: 1) ?? 0.0
             
             self.weatherInfoLabel.text = description
             self.cityLabel.text = name
-            self.temperatureLabel.text = ("\(temp)°")
-            self.lowTempLabel.text = ("\(minTemp) °F")
-            self.highTempLabel.text = ("\(maxTemp) °F")
             self.humidityLabel.text = ("\(humidity)%")
             self.pressureLabel.text = ("\(pressure) hpa")
             self.windLabel.text = ("\(wind) mph")
-        
+            
+            //Temperatures
+            let temp = Int(model?.mainInfo.temp ?? 0.0)
+            self.temperatureLabel.text = ("\(temp)°")
+            
+            if self.defaultsManager.units == "metric" {
+                let minTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMin ?? 0.0)
+                let maxTemp = self.conditionsManager.temperatureInFahrenheit(temperature: model?.mainInfo.tempMax ?? 0.0)
+                self.lowTempLabel.text = ("\(minTemp) °F")
+                self.highTempLabel.text = ("\(maxTemp) °F")
+            } else {
+                let minTemp = self.conditionsManager.temperatureInCelsius(temperature: model?.mainInfo.tempMin ?? 0.0)
+                let maxTemp = self.conditionsManager.temperatureInCelsius(temperature: model?.mainInfo.tempMax ?? 0.0)
+                self.lowTempLabel.text = ("\(minTemp) °C")
+                self.highTempLabel.text = ("\(maxTemp) °C")
+            }
+            
+            //Conditions
+            let conditions = self.defaultsManager.choosenConditions ?? []
+            for condition in conditions {
+                switch condition.type {
+                case .humidity:
+                    self.humidityStack.isHidden = !condition.selected
+                case .wind:
+                    self.windStack.isHidden = !condition.selected
+                case .pressure:
+                    self.pressureStack.isHidden = !condition.selected
+                }
+            }
         }
     }
     
     
     @IBAction func settingsTapped(_ sender: Any) {
-        
+        let vc = SettingsViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(vc, animated: true, completion: nil)
+        visualEffectView.isHidden = false
+        visualEffectView.alpha = 1
     }
     
     @IBAction func searchTapped(_ sender: Any) {
@@ -130,10 +160,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func addGradient(){
-        gradientView.addGradientWithDirection(.bottomLeftToTopRight, colors: [.black,.blue])
-    }
-    
 }
 
 // MARK: - Search Delegate
@@ -146,6 +172,15 @@ extension HomeViewController: SearchDelegate {
     
     func didChooseLocation(model: WeatherModel) {
         viewModel.weatherModel = model
+    }
+}
+
+// MARK: - Settings Delegate
+
+extension HomeViewController: SettingsDelegate {
+    func didCloseSettings() {
+        viewModel.getWeatherForLastLocation()
+        hideBlurWithAnimation()
     }
 }
 

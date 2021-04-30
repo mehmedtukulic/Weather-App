@@ -14,8 +14,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weatherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tND-5q-1fL">
+                                <rect key="frame" x="87" y="381" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Bte-ea-1Kk"/>
+                                    <constraint firstAttribute="width" constant="240" id="wdo-14-s2A"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tND-5q-1fL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Gow-zK-Vfh"/>
+                            <constraint firstItem="tND-5q-1fL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-30" id="SJx-0o-jaG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wLx-45-FTP"/>
                 </viewController>
@@ -42,4 +55,7 @@
             <point key="canvasLocation" x="-17.39130434782609" y="70.982142857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="weatherIcon" width="512" height="512"/>
+    </resources>
 </document>

@@ -8,12 +8,13 @@
 import Foundation
 
 class DefaultsManager{
-    var firstLogin: Bool? {
+  
+    var units: String? {
         set(value) {
-            UserDefaults.standard.set(value, forKey: "firstLogin")
+            UserDefaults.standard.set(value, forKey: "units")
         }
         get {
-            return UserDefaults.standard.bool(forKey: "firstLogin")
+            return UserDefaults.standard.string(forKey: "units")
         }
     }
     
@@ -36,4 +37,25 @@ class DefaultsManager{
             return []
         }
     }
+    
+    var choosenConditions: [Condition]? {
+        set(value) {
+            do {
+                try UserDefaults.standard.setObject(value, forKey: "choosenConditions")
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        get {
+            do {
+                let locations = try UserDefaults.standard.getObject(forKey: "choosenConditions", castTo: [Condition].self)
+                return locations
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            return []
+        }
+    }
+
 }

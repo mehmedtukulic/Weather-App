@@ -53,7 +53,6 @@ class SearchViewController: UIViewController {
         searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(searchTermChanged), for: .editingChanged)
         
-        
         containerView.backgroundColor = .clear
         closeButton.layer.cornerRadius = 16
     }
@@ -194,8 +193,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 
             } failure: { [weak self] (error) in
                 self?.stopSpinner()
-                self?.dismiss(animated: true, completion: nil)
-                self?.delegate?.didClose()
+                self?.showToast(message: error)
             }
         }
         

@@ -21,6 +21,6 @@ class SearchInfoViewCell: UICollectionViewCell {
     }
     
     func setNoLocations(){
-        infoLabel.text = "No locations found :("
+        infoLabel.text = "No locations found  :("
     }
 }
